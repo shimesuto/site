@@ -1,1 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ripping off guns.lol est 2025</title>
 
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-pink: #f7c4cf;
+      --color-white: #ffffff;
+      --color-blue: #c9e9f7;
+      --color-lavender: #c7c6f7;
+
+      --color-dark-bg: #0e0e11;
+      --color-dark-text: #eeeeee;
+      --color-dark-accent: #c7c6f7;
+    }
+
+    [data-theme="light"] {
+      --color-bg: var(--color-white);
+      --color-text: #1a1a1a;
+      --color-accent: var(--color-pink);
+      --color-card: rgba(255, 255, 255, 0.4);
+    }
+
+    [data-theme="dark"] {
+      --color-bg: var(--color-dark-bg);
+      --color-text: var(--color-dark-text);
+      --color-accent: var(--color-dark-accent);
+      --color-card: rgba(30, 30, 30, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      scroll-behavior: smooth;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      position: relative;
+      transition: background-color 0.8s ease;
+      overflow-x: hidden;
+    }
+
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      z-index: -2;
+      animation: scroll-pattern 60s linear infinite;
+      background-image: 
+        linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%),
+        linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+      opacity: 0.1;
+    }
+
+    /* Static gradient overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body[data-theme="light"]::after {
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 200, 0.6) 20%,
+        rgba(255, 200, 255, 0.6) 40%,
+        rgba(200, 255, 255, 0.6) 60%,
+        rgba(220, 200, 255, 0.6) 80%,
+        rgba(255, 255, 255, 0.8) 100%
+      );
+    }
+
+    body[data-theme="dark"]::after {
+      background: linear-gradient(135deg, 
+        rgba(14, 14, 17, 0.9) 0%,
+        rgba(50, 30, 60, 0.8) 20%,
+        rgba(60, 30, 80, 0.8) 40%,
+        rgba(30, 60, 80, 0.8) 60%,
+        rgba(40, 50, 90, 0.8) 80%,
+        rgba(14, 14, 17, 0.9) 100%
+      );
+    }
+
+ 
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.8;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .shape.triangle {
+      width: 0;
+      height: 0;
+      background: transparent;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    }
+
+    .shape.triangle::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 43px solid var(--color-lavender);
+      top: -21px;
+      left: -25px;
+    }
+
+    .shape.triangle.pink::before {
+      border-bottom-color: var(--color-pink);
+    }
+
+    .shape.triangle.blue::before {
+      border-bottom-color: var(--color-blue);
+    }
+
+    .shape.triangle.lavender::before {
+      border-bottom-color: var(--color-lavender);
+    }
+
+    .shape.triangle.gradient::before {
+      border-bottom: 43px solid var(--color-pink);
+      background: linear-gradient(45deg, var(--color-pink), var(--color-blue));
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+
+    .shape:nth-child(1) { animation-delay: 0s; animation-duration: 15s; }
+    .shape:nth-child(2) { animation-delay: 2s; animation-duration: 18s; }
+    .shape:nth-child(3) { animation-delay: 4s; animation-duration: 22s; }
+    .shape:nth-child(4) { animation-delay: 6s; animation-duration: 16s; }
+    .shape:nth-child(5) { animation-delay: 8s; animation-duration: 20s; }
+    .shape:nth-child(6) { animation-delay: 10s; animation-duration: 17s; }
+    .shape:nth-child(7) { animation-delay: 12s; animation-duration: 19s; }
+    .shape:nth-child(8) { animation-delay: 14s; animation-duration: 21s; }
+    .shape:nth-child(9) { animation-delay: 16s; animation-duration: 23s; }
+    .shape:nth-child(10) { animation-delay: 18s; animation-duration: 15s; }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .shape {
+        display: none;
+      }
+    }
+
+    @keyframes scroll-pattern {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(1000px, 600px);
+      }
+    }
+
+    /* Animated gradient border keyframes */
+    @keyframes border-shift {
+      0% {
+        background: linear-gradient(45deg, var(--color-pink), var(--color-blue), var(--color-lavender), var(--color-pink));
+        background-size: 300% 300%;
+        background-position: 0% 0%;
+      }
+      25% {
+        background-position: 100% 0%;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+      75% {
+        background-position: 0% 100%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background-color: transparent;
+      border: 2px solid var(--color-accent);
+      color: var(--color-text);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--color-accent);
+      color: #fff;
+    }
+
+    .section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 60vh;
+      padding: 3rem 1.5rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .card-wrapper {
+      background: linear-gradient(45deg, var(--color-pink), var(--color-blue), var(--color-lavender), var(--color-pink));
+      background-size: 300% 300%;
+      padding: 4px;
+      border-radius: 2.5rem;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+      animation: border-shift 8s ease-in-out infinite;
+    }
+
+    .card {
+      background: var(--color-card);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 2.5rem;
+      padding: 2.5rem;
+      max-width: 750px;
+      width: 100%;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    [data-theme="dark"] .card {
+      box-shadow: 0 0 40px color-mix(in srgb, var(--color-blue) 50%, transparent);
+    }
+
+    .card h2 {
+      font-size: 2.2rem;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      text-shadow: none;
+    }
+
+    .card p {
+      font-size: 1.15rem;
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 2px;
+      width: 60px;
+      background: linear-gradient(to right, var(--color-pink), var(--color-blue));
+      margin: 1.5rem auto;
+      border-radius: 999px;
+    }
+
+    .neon-button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid var(--color-accent);
+      border-radius: 1.5rem;
+      font-weight: bold;
+      font-size: 1rem;
+      color: var(--color-text);
+      cursor: pointer;
+      backdrop-filter: blur(15px);
+      transition: all 0.25s ease;
+    }
+
+    .neon-button:hover {
+      background-color: var(--color-accent);
+      color: #fff;
+      box-shadow: 0 0 15px var(--color-accent);
+    }
+
+    .name-banner {
+      padding: 2rem 1rem 3rem;
+      text-align: center;
+      color: var(--color-accent);
+      position: relative;
+      z-index: 5;
+    }
+
+    .name-banner h1 {
+      font-size: 5rem;
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 1.5px;
+      text-shadow: none;
+    }
+
+    body[data-theme="dark"] .name-banner h1 {
+      text-shadow: 0 0 10px var(--color-accent);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .name-banner .tagline {
+      font-size: 1.2rem;
+      color: var(--color-text);
+      margin-top: 0.5rem;
+      opacity: 0.8;
+    }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 10px var(--color-accent); }
+      50% { text-shadow: 0 0 20px var(--color-blue); }
+    }
+
+    .splash {
+      position: fixed;
+      inset: 0;
+      background: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 10000;
+      transition: opacity 0.8s ease;
+    }
+
+    .splash h1 {
+      font-size: 2.5rem;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+    }
+
+    .splash button {
+      font-size: 1.1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--color-accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-weight: bold;
+    }
+
+    .splash button:hover {
+      background: var(--color-blue);
+    }
+
+    /* Volume Control Widget */
+    .volume-widget {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    .visualizer {
+      background: var(--color-pink);
+      border-radius: 1rem 1rem 0 0;
+      padding: 1rem;
+      width: 200px;
+      height: 80px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-bottom: none;
+    }
+
+    .visualizer-bar {
+      width: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 4px;
+      transition: height 0.1s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .volume-control {
+      background: var(--color-pink);
+      border-radius: 0 0 1rem 1rem;
+      padding: 1.5rem;
+      width: 200px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top: none;
+    }
+
+    .volume-slider {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 4px;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .volume-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .volume-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .volume-label {
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 0.5rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .volume-percentage {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 0.2rem;
+    }
+
+
+    [data-theme="dark"] .visualizer,
+    [data-theme="dark"] .volume-control {
+      background: var(--color-dark-accent);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .volume-slider {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+
+    [data-theme="dark"] .shape.triangle.pink::before {
+      border-bottom-color: var(--color-pink);
+    }
+
+    [data-theme="dark"] .shape.triangle.blue::before {
+      border-bottom-color: var(--color-blue);
+    }
+
+    [data-theme="dark"] .shape.triangle.lavender::before {
+      border-bottom-color: var(--color-dark-accent);
+    }
+
+    /* Different animation delays for each card to create variety */
+    .section:nth-child(3) .card-wrapper {
+      animation-delay: -1s;
+    }
+    
+    .section:nth-child(4) .card-wrapper {
+      animation-delay: -2s;
+    }
+    
+    .section:nth-child(5) .card-wrapper {
+      animation-delay: -3s;
+    }
+    
+    .section:nth-child(6) .card-wrapper {
+      animation-delay: -4s;
+    }
+
+
+    .cursor-ripple {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: ripple-expand 0.6s ease-out;
+    }
+
+    @keyframes ripple-expand {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+      }
+      100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+      }
+    }
+
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, var(--color-pink), var(--color-blue), var(--color-lavender));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .social-link:hover::before {
+      opacity: 1;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      fill: var(--color-text);
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+
+    .social-link:hover .social-icon {
+      fill: white;
+      transform: scale(1.1);
+    }
+
+    /* Platform specific colors on hover */
+    .social-link.roblox:hover {
+      border-color: #00A2FF;
+    }
+
+    .social-link.discord:hover {
+      border-color: #5865F2;
+    }
+
+    .social-link.youtube:hover {
+      border-color: #FF0000;
+    }
+
+    [data-theme="dark"] .social-link {
+      background: rgba(30, 30, 30, 0.6);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <div class="splash" id="splash">
+    <h1>Welcome to Symest's World</h1>
+    <button onclick="enterSite()">Enter</button>
+  </div>
+
+  <!-- Floating Geometric Shapes -->
+  <div class="floating-shapes" id="floatingShapes">
+    <!-- Shapes will be dynamically generated -->
+  </div>
+
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <!-- Volume Widget -->
+  <div class="volume-widget">
+    <div class="visualizer" id="visualizer">
+      <!-- Visualizer bars will be generated by JavaScript -->
+    </div>
+    <div class="volume-control">
+      <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="40">
+      <div class="volume-label">Volume</div>
+      <div class="volume-percentage" id="volumePercentage">40%</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="card-wrapper" style="background: none; box-shadow: none; padding: 0; animation: none;">
+      <div class="name-banner">
+        <h1>Hi! I'm Symest</h1>
+        <p class="tagline">Welcome to my site :3</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card-wrapper">
+      <div class="card">
+        <h2>Welcome</h2>
+        <div class="divider"></div>
+        <p>Hi! I'm Symest, a pokemon with a passion for music production. This site is like my version of guns.lol, or straw.page, except it's my own and I can do whatever I want with it!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card-wrapper">
+      <div class="card">
+        <h2>My Music</h2>
+        <div class="divider"></div>
+        <p>I make genres like VGM, House, Hyperflip, and many more (I need to find a niche lol). As for long-term projects, I'm working on covering every single track from Pokemon Mystery Dungeon: Explorers. You can find all my music on my YouTube!</p>
+        <button onclick="window.location.href='https://www.youtube.com/@ImSymest'" class="neon-button">Listen Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card-wrapper">
+      <div class="card">
+        <h2>More About Me</h2>
+        <div class="divider"></div>
+        <p>If you hadn't seen yet, I have a couple pokesonas that I like to portray myself/identify myself as! You've probably seen my main delphox, however I also have a Sylveon, Primarina, and Meowscarada sona you may not have seen! Besides music, I'm also a video editor, digital artist (kinda), and "programmer" (hardly). My favorite games are Yo-Kai Watch 2, the Zelda series, and Pokemon Mystery Dungeon, and my favorite color is a light rosy pink! If you're curious about more details, click the button below!</p>
+        <button onclick="window.location.href='https://en.pronouns.page/@imsymest'" class="neon-button">pronouns.page</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card-wrapper">
+      <div class="card">
+        <h2>Connect With Me</h2>
+        <div class="divider"></div>
+        <p>Find me across different platforms for questions, inquiries, music help, or hanging out! I love chatting, and my DM's are always open! (in other words, come talk to me!!!). I primarily use Discord. Feel free to join my server through the button below and DM me!</p>
+        <div class="social-links">
+          <a href="#" class="social-link roblox" target="https://www.roblox.com/users/7275091359/profile" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24">
+              <path d="M5.87 2.12L2.12 18.13l16.01 3.75L21.88 5.87L5.87 2.12zm3.45 8.95l1.91-6.49 6.49 1.91-1.91 6.49-6.49-1.91z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link discord" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.211.375-.445.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 2.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-2.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link youtube" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <audio id="bg-music" preload="auto" loop>
+    <source src="https://raw.githubusercontent.com/shimesuto/site/main/pg_pop.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      document.body.setAttribute("data-theme", savedTheme);
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute("data-theme") || "light";
+      const next = current === "light" ? "dark" : "light";
+      body.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    function enterSite() {
+      document.getElementById("splash").style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        startFloatingShapes();
+      }, 800);
+
+      const bgMusic = document.getElementById("bg-music");
+      bgMusic.volume = 0.4;
+      bgMusic.play().catch(console.warn);
+    }
+
+
+    function createShape() {
+      const colors = ['pink', 'blue', 'lavender'];
+      const colorType = colors[Math.floor(Math.random() * colors.length)];
+      
+      const shape = document.createElement('div');
+      shape.className = `shape triangle ${colorType}`;
+      
+
+      const sizeMultiplier = 0.8 + Math.random() * 0.8; // 0.8x to 1.6x
+      const baseSize = 25;
+      const scaledSize = baseSize * sizeMultiplier;
+      
+      shape.style.setProperty('--triangle-size', scaledSize + 'px');
+      shape.style.transform = `scale(${sizeMultiplier})`;
+      
+
+      shape.style.left = Math.random() * 100 + '%';
+      
+
+      const drift = (Math.random() - 0.5) * 300;
+      shape.style.setProperty('--drift', drift + 'px');
+      
+      // Custom animation with drift
+      const animationName = `float-${Math.random().toString(36).substr(2, 9)}`;
+      const keyframes = `
+        @keyframes ${animationName} {
+          0% {
+            transform: translateY(100vh) translateX(0) rotate(0deg) scale(${sizeMultiplier});
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.8;
+          }
+          50% {
+            transform: translateY(50vh) translateX(${drift}px) rotate(180deg) scale(${sizeMultiplier});
+          }
+          90% {
+            opacity: 0.8;
+          }
+          100% {
+            transform: translateY(-100px) translateX(${drift * 2}px) rotate(360deg) scale(${sizeMultiplier});
+            opacity: 0;
+          }
+        }
+      `;
+      
+
+      const style = document.createElement('style');
+      style.textContent = keyframes;
+      document.head.appendChild(style);
+      
+      shape.style.animation = `${animationName} ${12 + Math.random() * 8}s linear infinite`;
+      
+      return shape;
+    }
+
+    function startFloatingShapes() {
+      const container = document.getElementById('floatingShapes');
+      
+      // Create initial shapes with more density
+      for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+          const shape = createShape();
+          container.appendChild(shape);
+          
+
+          setTimeout(() => {
+            if (shape.parentNode) {
+              shape.parentNode.removeChild(shape);
+            }
+          }, 25000);
+        }, i * 1000);
+      }
+      
+
+      setInterval(() => {
+        const shape = createShape();
+        container.appendChild(shape);
+        
+
+        setTimeout(() => {
+          if (shape.parentNode) {
+            shape.parentNode.removeChild(shape);
+          }
+        }, 25000);
+      }, 1800);
+    }
+
+    const volumeSlider = document.getElementById("volumeSlider");
+    const volumePercentage = document.getElementById("volumePercentage");
+    const bgMusic = document.getElementById("bg-music");
+
+    volumeSlider.addEventListener("input", function() {
+      const volume = this.value;
+      volumePercentage.textContent = volume + "%";
+      bgMusic.volume = volume / 100;
+    });
+
+
+    function createVisualizer() {
+      const visualizer = document.getElementById("visualizer");
+      const barCount = 16;
+      
+      for (let i = 0; i < barCount; i++) {
+        const bar = document.createElement("div");
+        bar.className = "visualizer-bar";
+        bar.style.height = "10px";
+        visualizer.appendChild(bar);
+      }
+    }
+
+    function animateVisualizer() {
+      const bars = document.querySelectorAll(".visualizer-bar");
+      const bgMusic = document.getElementById("bg-music");
+      
+      bars.forEach((bar, index) => {
+
+        const baseHeight = 10;
+        const maxHeight = 50;
+        const volume = bgMusic.volume;
+        
+
+        const frequency = (index + 1) * 0.5;
+        const time = Date.now() * 0.003;
+        
+
+        const wave1 = Math.sin(time * frequency) * 0.5 + 0.5;
+        const wave2 = Math.sin(time * frequency * 1.7) * 0.3 + 0.3;
+        const noise = Math.random() * 0.2;
+        
+        const intensity = (wave1 + wave2 + noise) * volume;
+        const height = baseHeight + (intensity * (maxHeight - baseHeight));
+        
+        bar.style.height = Math.max(5, height) + "px";
+      });
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+      createVisualizer();
+      setInterval(animateVisualizer, 50); // 20 FPS for smooth animation
+    });
+
+
+    document.addEventListener('click', function(e) {
+      createRipple(e.clientX, e.clientY);
+    });
+
+    function createRipple(x, y) {
+      const ripple = document.createElement('div');
+      ripple.className = 'cursor-ripple';
+      
+
+      const colors = [
+        'rgba(247, 196, 207, 0.4)', // pink
+        'rgba(201, 233, 247, 0.4)', // blue  
+        'rgba(199, 198, 247, 0.4)'  // lavender
+      ];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      
+      ripple.style.background = `radial-gradient(circle, ${randomColor} 0%, transparent 70%)`;
+      ripple.style.left = (x - 50) + 'px';
+      ripple.style.top = (y - 50) + 'px';
+      ripple.style.border = `2px solid ${randomColor}`;
+      
+      document.body.appendChild(ripple);
+      
+
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.parentNode.removeChild(ripple);
+        }
+      }, 600);
+    }
+  </script>
+</body>
+</html>
