@@ -68,6 +68,30 @@
       opacity: 0.1;
     }
 
+    /* Hide main content initially with smooth transition */
+body:not(.loaded) .section,
+body:not(.loaded) .volume-widget,
+body:not(.loaded) .theme-toggle,
+body:not(.loaded) .floating-shapes {
+  display: none !important;
+}
+
+/* Smooth fade-in transition for main content */
+.section,
+.volume-widget,
+.theme-toggle,
+.floating-shapes {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+body.loaded .section,
+body.loaded .volume-widget,
+body.loaded .theme-toggle,
+body.loaded .floating-shapes {
+  opacity: 1;
+}
+
     /* Static gradient overlay */
     body::after {
       content: '';
@@ -533,6 +557,208 @@
       animation: ripple-expand 0.6s ease-out;
     }
 
+    /* Loading Screen Styles */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 20000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.loading-screen.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.loading-container {
+  text-align: center;
+  position: relative;
+}
+
+.loading-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #f7c4cf;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 20px rgba(247, 196, 207, 0.6);
+  animation: loading-pulse 2s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 0 20px rgba(247, 196, 207, 0.6);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 30px rgba(247, 196, 207, 0.8), 0 0 40px rgba(201, 233, 247, 0.4);
+  }
+}
+
+.loading-spinner {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+}
+
+.spinner-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  animation: spin 3s linear infinite;
+}
+
+.spinner-ring:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  border-top: 4px solid #f7c4cf;
+  border-right: 4px solid #f7c4cf;
+  animation-duration: 2s;
+}
+
+.spinner-ring:nth-child(2) {
+  width: 90px;
+  height: 90px;
+  top: 15px;
+  left: 15px;
+  border-bottom: 4px solid #c9e9f7;
+  border-left: 4px solid #c9e9f7;
+  animation-duration: 1.5s;
+  animation-direction: reverse;
+}
+
+.spinner-ring:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  top: 30px;
+  left: 30px;
+  border-top: 4px solid #c7c6f7;
+  border-right: 4px solid #c7c6f7;
+  animation-duration: 1s;
+}
+
+.spinner-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #f7c4cf, #c9e9f7, #c7c6f7);
+  border-radius: 50%;
+  animation: center-glow 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes center-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(247, 196, 207, 0.8);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(201, 233, 247, 0.8), 0 0 30px rgba(199, 198, 247, 0.6);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.loading-progress {
+  width: 300px;
+  height: 6px;
+  background: rgba(247, 196, 207, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 1rem auto;
+  position: relative;
+}
+
+.loading-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #f7c4cf, #c9e9f7, #c7c6f7, #f7c4cf);
+  background-size: 200% 100%;
+  border-radius: 3px;
+  width: 0%;
+  animation: progress-fill 2s ease-out, progress-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-fill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes progress-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.loading-text {
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 1rem;
+  opacity: 0.8;
+  animation: loading-text-fade 3s ease-in-out infinite;
+}
+
+@keyframes loading-text-fade {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.loading-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.loading-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #f7c4cf;
+  border-radius: 50%;
+  animation: particle-float 4s ease-in-out infinite;
+}
+
+.loading-particle:nth-child(2n) {
+  background: #c9e9f7;
+  animation-delay: -1s;
+}
+
+.loading-particle:nth-child(3n) {
+  background: #c7c6f7;
+  animation-delay: -2s;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
     @keyframes ripple-expand {
       0% {
         width: 0;
@@ -629,6 +855,23 @@
     <h1>Hello! Click "Enter" to load</h1>
     <button onclick="enterSite()">Enter</button>
   </div>
+
+  <div class="loading-screen" id="loadingScreen">
+  <div class="loading-particles" id="loadingParticles"></div>
+  <div class="loading-container">
+    <div class="loading-title">Loading...</div>
+    <div class="loading-spinner">
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-center"></div>
+    </div>
+    <div class="loading-progress">
+      <div class="loading-progress-bar"></div>
+    </div>
+    <div class="loading-text">Preparing your magical experience</div>
+  </div>
+</div>
 
   <div class="floating-shapes" id="floatingShapes">
 
@@ -736,17 +979,61 @@
     }
 
     function enterSite() {
-      document.getElementById("splash").style.opacity = 0;
-      setTimeout(() => {
-        document.getElementById("splash").style.display = "none";
-        startFloatingShapes();
-      }, 800);
+  // Hide splash screen
+  document.getElementById("splash").style.opacity = 0;
+  setTimeout(() => {
+    document.getElementById("splash").style.display = "none";
+    
+    // Show loading screen
+    showLoadingScreen();
+  }, 800);
+}
 
-      const bgMusic = document.getElementById("bg-music");
-      bgMusic.volume = 0.4;
-      bgMusic.play().catch(console.warn);
-    }
+function showLoadingScreen() {
+  const loadingScreen = document.getElementById("loadingScreen");
+  loadingScreen.classList.add("active");
+  
+  // Create loading particles
+  createLoadingParticles();
+  
+  // Start loading sequence
+  setTimeout(() => {
+    hideLoadingScreen();
+  }, 2500); // Show loading for 2.5 seconds
+}
 
+function hideLoadingScreen() {
+  const loadingScreen = document.getElementById("loadingScreen");
+  
+  // Start showing content while loading screen is still visible
+  document.body.classList.add("loaded");
+  
+  // Start background processes
+  startFloatingShapes();
+  
+  // Start background music
+  const bgMusic = document.getElementById("bg-music");
+  bgMusic.volume = 0.4;
+  bgMusic.play().catch(console.warn);
+  
+  // Hide loading screen after content starts fading in
+  setTimeout(() => {
+    loadingScreen.classList.remove("active");
+  }, 400);
+}
+function createLoadingParticles() {
+  const container = document.getElementById("loadingParticles");
+  
+  // Create 15 floating particles
+  for (let i = 0; i < 15; i++) {
+    const particle = document.createElement("div");
+    particle.className = "loading-particle";
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.animationDelay = Math.random() * 4 + "s";
+    particle.style.animationDuration = (3 + Math.random() * 2) + "s";
+    container.appendChild(particle);
+  }
+}
 
     function createShape() {
       const colors = ['pink', 'blue', 'lavender'];
